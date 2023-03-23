@@ -26,11 +26,10 @@ case class Table[T](xs: List[T]) {
    * @return a new Table[T] with only the matching rows.
    */
   def lensFilter[P](p: P => Boolean)(lens: T => P): Table[T] = {
-    Table(xs.filter(x => p(lens(x))))
 
-//    val ys = xs.filter(x => p(lens(x)))
-//    Table(ys)
-    // Leading to Table[List[T]] which leads to error since expected T insted of List[T]
+    val ys = xs.filter(x => p(lens(x)))
+    Table(ys)
+
   }
   ///** SOLUTION END */ ???
 
